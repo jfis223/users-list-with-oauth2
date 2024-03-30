@@ -16,8 +16,7 @@ export class UserDataModel implements DataModel<User> {
   toDomain() {
     return new User({
       id: this.id,
-      firstName: this.first_name,
-      lastName: this.last_name,
+      name: `${this.first_name} ${this.last_name}`,
       email: this.email,
       avatar: this.avatar
     });

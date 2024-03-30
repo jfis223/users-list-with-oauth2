@@ -3,6 +3,8 @@ import axios from "axios";
 
 export interface GetRequestOptions {
   params?: Record<string, unknown>;
+  headers?: Record<string, string>;
+  withCredentials?: boolean;
   paramsSerializer?: {
     encode: (params: Record<string, unknown>) => string;
   };
