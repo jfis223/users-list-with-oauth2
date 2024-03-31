@@ -10,7 +10,7 @@ import { AuthUserDataModel } from "../models/auth_user_data_model.ts";
 @injectable()
 export class AuthRepository implements IAuthRepository {
   @inject(TYPES.AuthService) private authServiceProvider!: IocProvider<AuthService>;
-  async user(): Promise<User> {
+  async user(): Promise<User | null> {
     const authService = await this.authServiceProvider();
     const data = await authService.get<Record<string, unknown>>("/auth/login/success", {
       withCredentials: true,
@@ -20,6 +20,26 @@ export class AuthRepository implements IAuthRepository {
         "Access-Control-Allow-Credentials": "true"
       }
     });
-    return fromJson<AuthUserDataModel>(AuthUserDataModel, data).toDomain();
+    if (data.success) {
+      return fromJson<AuthUserDataModel>(AuthUserDataModel, data).toDomain();
+    } else {
+      return null;
+    }
+  }
+  async localLogin(username: string, password: string): Promise<boolean> {
+    const authService = await this.authServiceProvider();
+    const data: Record<string, unknown> = await authService.post("/auth/login", {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": "true"
+      },
+      params: {
+        email: username,
+        password: password
+      }
+    });
+    return Boolean(data.success);
   }
 }

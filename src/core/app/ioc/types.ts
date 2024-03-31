@@ -5,5 +5,6 @@ export const TYPES = {
   IUsersRepository: Symbol.for("IUsersRepository"),
   IAuthRepository: Symbol.for("IAuthRepository"),
   GetUsersListUseCase: Symbol.for("GetUsersListUseCase"),
-  GetAuthProfileUseCase: Symbol.for("GetAuthProfileUseCase")
+  GetAuthProfileUseCase: Symbol.for("GetAuthProfileUseCase"),
+  PostLocalLoginUseCase: Symbol.for("PostLocalLoginUseCase")
 };

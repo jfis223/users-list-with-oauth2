@@ -1,10 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../../state/session/session.slice.ts";
-import { logOut } from "../../../state/session/session.slice.ts";
+import { locator } from "../../../core/app/ioc";
+import type { IEnvVars } from "../../../core/app/domain/interfaces/env_vars.ts";
+import { TYPES } from "../../../core/app/ioc/types.ts";
 
 export default function Users() {
   const profile = useSelector(selectUser);
-  const dispatch = useDispatch();
+  const authURL = locator.get<IEnvVars>(TYPES.IEnvVars).authURL;
 
   return (
     <div>
@@ -16,7 +18,7 @@ export default function Users() {
           <h3>{profile.id}</h3>
         </div>
       )}
-      <button onClick={() => dispatch(logOut())}>Log OUT</button>
+      <a href={`${authURL}/auth/logout`}>log Out</a>
     </div>
   );
 }

@@ -17,14 +17,16 @@ export const sessionSlice = createSlice({
     logInFetch: (state) => {
       state.isLoading = true;
     },
-    logIn: (state, action: PayloadAction<User>) => {
-      state.isLoggedIn = true;
-      state.profile = {
-        name: action.payload.name,
-        id: action.payload.id,
-        avatar: action.payload.avatar,
-        email: action.payload.email
-      };
+    logIn: (state, action: PayloadAction<User | null>) => {
+      if (action.payload) {
+        state.isLoggedIn = true;
+        state.profile = {
+          name: action.payload.name,
+          id: action.payload.id,
+          avatar: action.payload.avatar,
+          email: action.payload.email
+        };
+      }
       state.isLoading = false;
     },
     logInFailure: (state) => {

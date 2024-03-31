@@ -15,6 +15,12 @@ router.get("/login/success", (req, res) => {
       user: req.user
       //   cookies: req.cookies
     });
+  } else {
+    res.status(200).json({
+      success: false,
+      message: "loggedOut"
+      //   cookies: req.cookies
+    });
   }
 });
 
@@ -50,16 +56,6 @@ router.get(
   })
 );
 
-router.get("/facebook", passport.authenticate("facebook", { scope: ["profile"] }));
-
-router.get(
-  "/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed"
-  })
-);
-
 router.get("/amazon", passport.authenticate("amazon", { scope: ["profile"] }));
 
 router.get(
@@ -69,5 +65,14 @@ router.get(
     failureRedirect: "/login/failed"
   })
 );
+
+router.post("/login", passport.authenticate("local", { successRedirect: "/auth/local", failureRedirect: "/login/failed", scope: ["profile"] }));
+router.get("/local", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.setHeader("Access-Control-Allow-Headerss", "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
+  res.json({ success: true });
+});
 
 module.exports = router;
