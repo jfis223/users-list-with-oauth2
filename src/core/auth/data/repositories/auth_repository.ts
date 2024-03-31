@@ -28,6 +28,7 @@ export class AuthRepository implements IAuthRepository {
   }
   async localLogin(username: string, password: string): Promise<boolean> {
     const authService = await this.authServiceProvider();
+    //Sending password as params is a security flaw, but I didn't have time to research how to encode them and send it as data to PassportJS
     const data: Record<string, unknown> = await authService.post("/auth/login", {
       withCredentials: true,
       headers: {

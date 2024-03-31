@@ -10,7 +10,14 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  margin-bottom: ${px2rem(10)};
+`;
+
+const Subtitle = styled.p`
+  text-align: center;
   margin-bottom: ${px2rem(20)};
+  font-size: ${px2rem(14)};
+  color: ${colors.lightGray};
 `;
 
 const ButtonWrapper = styled.div`
@@ -18,6 +25,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
   gap: ${px2rem(10)};
 `;
 
@@ -44,4 +52,33 @@ const SocialButton = styled.a`
   }
 `;
 
-export default { Wrapper, Title, SocialButton, ButtonWrapper };
+const OrWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: ${px2rem(20)} 0;
+  width: 100%;
+`;
+
+const Line = styled.div`
+  flex: 1;
+  height: 1px;
+  background-color: ${colors.lightGray};
+`;
+
+const Or = styled.p`
+  text-transform: uppercase;
+  color: ${colors.white};
+  font-weight: 200;
+  margin: 0 ${px2rem(8)};
+`;
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+`;
+
+export default { Wrapper, Title, SocialButton, ButtonWrapper, OrWrapper, Line, Or, Subtitle, Center };

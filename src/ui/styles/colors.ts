@@ -1,4 +1,15 @@
-export type colorsType = "white" | "black" | "gray" | "clearGray" | "main" | "secondary" | "variant" | "blueGray" | "lightGray" | "blueGray10";
+export type colorsType =
+  | "white"
+  | "black"
+  | "gray"
+  | "clearGray"
+  | "main"
+  | "secondary"
+  | "variant"
+  | "blueGray"
+  | "lightGray"
+  | "blueGray10"
+  | "red";
 
 export const colors: Record<colorsType, string> = {
   black: "#000000",
@@ -10,5 +21,6 @@ export const colors: Record<colorsType, string> = {
   main: "#225589",
   secondary: "#228A60",
   variant: "#7DADDD",
-  white: "#ffffff"
+  white: "#ffffff",
+  red: "#960034"
 };
