@@ -7,6 +7,8 @@ import { fromJson, fromJsonWithPagination } from "../../../../common/utils/class
 import { UserDataModel, UserDetailDataModel } from "../models/user_data_model.ts";
 import type { IocProvider } from "../../../app/ioc/interfaces.ts";
 import type { Page } from "../../../app/domain/models/page.ts";
+import type EditUserInput from "../../domain/view_models/edit_user_input.ts";
+import type NewUserInput from "../../domain/view_models/new_user_input.ts";
 
 @injectable()
 export class UsersRepository implements IUsersRepository {
@@ -29,5 +31,22 @@ export class UsersRepository implements IUsersRepository {
       }
     });
     return fromJson<UserDetailDataModel>(UserDetailDataModel, data).toDomain();
+  }
+  async editUser(values: EditUserInput): Promise<void> {
+    const { id, name, job } = values;
+    const usersService = await this.usersServiceProvider();
+    await usersService.patch(`/api/users/${id}`, {
+      data: {
+        name,
+        job
+      }
+    });
+  }
+  async newUser(values: NewUserInput): Promise<string> {
+    const usersService = await this.usersServiceProvider();
+    const data: Record<string, string> = await usersService.post(`/api/users/`, {
+      data: values
+    });
+    return data.id;
   }
 }

@@ -60,7 +60,7 @@ const LightSpan = styled.span`
   font-weight: 200;
 `;
 
-const LogOutButton = styled.a`
+const LogOutButton = styled.button`
   all: unset;
   cursor: pointer;
   background-color: ${colors.main};

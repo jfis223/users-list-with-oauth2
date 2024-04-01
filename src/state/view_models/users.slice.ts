@@ -6,4 +6,6 @@ export interface UsersSlice {
   isLoading: boolean;
   hasError: boolean;
   userDetail: User | null;
+  patchDetailSuccess: boolean | null;
+  postDetailSuccess: string | null;
 }

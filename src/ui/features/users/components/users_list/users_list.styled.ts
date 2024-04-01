@@ -31,7 +31,7 @@ const TD = styled.td`
     width: ${px2rem(50)};
     height: ${px2rem(50)};
     aspect-ratio: 1 / 1;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 50%;
     border: 1px solid ${colors.lightGray};
     margin: 0 auto;

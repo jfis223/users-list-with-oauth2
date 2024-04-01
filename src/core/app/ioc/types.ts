@@ -7,5 +7,7 @@ export const TYPES = {
   GetUsersListUseCase: Symbol.for("GetUsersListUseCase"),
   GetAuthProfileUseCase: Symbol.for("GetAuthProfileUseCase"),
   PostLocalLoginUseCase: Symbol.for("PostLocalLoginUseCase"),
-  GetUserDetailUseCase: Symbol.for("GetUserDetailUseCase")
+  GetUserDetailUseCase: Symbol.for("GetUserDetailUseCase"),
+  PatchUserUseCase: Symbol.for("PatchUserUseCase"),
+  PostNewUserUseCase: Symbol.for("PostNewUserUseCase")
 };
