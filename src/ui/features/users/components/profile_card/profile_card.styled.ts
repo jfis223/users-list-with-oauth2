@@ -6,6 +6,7 @@ import { minWidth } from "../../../../styles/breakpoints.ts";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   gap: ${px2rem(30)};
   ${() =>
@@ -85,4 +86,14 @@ const LogOutButton = styled.a`
     )}
 `;
 
-export default { Wrapper, Avatar, TextGroup, LightSpan, LogOutButton };
+const Email = styled.h3`
+  ${() =>
+    minWidth(
+      "sm",
+      css`
+        text-align: end;
+      `
+    )}
+`;
+
+export default { Wrapper, Avatar, TextGroup, LightSpan, LogOutButton, Email };

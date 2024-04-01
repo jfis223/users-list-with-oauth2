@@ -7,8 +7,9 @@ import type { RootState } from "../index.ts";
 
 const initialState = (): UsersSlice => ({
   users: null,
-  isLoading: false,
-  hasError: false
+  isLoading: true,
+  hasError: false,
+  userDetail: null
 });
 
 export const usersSlice = createSlice({
@@ -29,14 +30,36 @@ export const usersSlice = createSlice({
     getUsersFailure: (state) => {
       state.isLoading = false;
       state.hasError = true;
+    },
+    getUserDetailFetch: (state, action: PayloadAction<string>) => {
+      if (action.payload) {
+        state.isLoading = true;
+        state.hasError = false;
+      }
+    },
+    getUserDetailSuccess: (state, action: PayloadAction<User | null>) => {
+      state.hasError = false;
+      state.userDetail = action.payload;
+      state.isLoading = false;
+    },
+    getUserDetailFailure: (state) => {
+      state.isLoading = false;
+      state.hasError = true;
+    },
+    getUserDetailClear: (state) => {
+      state.userDetail = null;
     }
   }
 });
 
-export const { getUsersFetch, getUsersSuccess, getUsersFailure } = usersSlice.actions;
+export const { getUsersFetch, getUsersSuccess, getUsersFailure, getUserDetailFetch, getUserDetailSuccess, getUserDetailFailure, getUserDetailClear } =
+  usersSlice.actions;
 
 const selectUsersBase = (state: RootState) => state.users;
 
 export const selectUsers = createSelector(selectUsersBase, (slice) => slice.users);
+export const selectUserDetail = createSelector(selectUsersBase, (slice) => slice.userDetail);
+export const selectUserLoading = createSelector(selectUsersBase, (slice) => slice.isLoading);
+export const selectUserError = createSelector(selectUsersBase, (slice) => slice.hasError);
 
 export default usersSlice.reducer;

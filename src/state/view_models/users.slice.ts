@@ -5,4 +5,5 @@ export interface UsersSlice {
   users: Page<User> | null;
   isLoading: boolean;
   hasError: boolean;
+  userDetail: User | null;
 }

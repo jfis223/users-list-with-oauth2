@@ -1,10 +1,12 @@
 import Card from "../../../../components/card/card.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getUsersFetch, selectUsers } from "../../../../../state/users/users.slice.ts";
+import { getUsersFetch, selectUserError, selectUserLoading, selectUsers } from "../../../../../state/users/users.slice.ts";
 import Styled from "./users_list.styled.ts";
 import { useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
+import { Eye } from "../../../../assets/icons";
+import LoadingSpinner from "../../../../components/loading_spinner/loading_spinner.tsx";
 
 export default function UsersList() {
   const dispatch = useDispatch();
@@ -37,6 +39,17 @@ export default function UsersList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber]);
 
+  const isLoading = useSelector(selectUserLoading);
+  const error = useSelector(selectUserError);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <Styled.ErrorMessage>{"An error has occurred while loading the users list. Please retry."}</Styled.ErrorMessage>;
+  }
+
   return (
     <Card>
       {users && (
@@ -62,7 +75,11 @@ export default function UsersList() {
                   <Styled.TD>
                     <a href={`mailto:${item.email}`}>{item.email}</a>
                   </Styled.TD>
-                  <Styled.TD>Edit</Styled.TD>
+                  <Styled.TD>
+                    <Styled.IconLink href={`/users/${item.id}/`}>
+                      View More <Eye />
+                    </Styled.IconLink>
+                  </Styled.TD>
                 </tr>
               ))}
             </tbody>

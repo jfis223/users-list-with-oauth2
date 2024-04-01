@@ -3,4 +3,5 @@ import type { User } from "../models/user.ts";
 
 export interface IUsersRepository {
   users(page: number): Promise<Page<User>>;
+  userDetail(id: string): Promise<User>;
 }

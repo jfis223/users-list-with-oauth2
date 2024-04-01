@@ -34,6 +34,7 @@ const BlackWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 `;
 
 const PositionedTexture = styled.div`

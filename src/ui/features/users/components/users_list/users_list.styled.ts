@@ -37,9 +37,9 @@ const TD = styled.td`
     margin: 0 auto;
   }
   a {
-    all: unset;
-    cursor: pointer;
     transition: all 0.3s ease;
+    color: ${colors.white};
+    text-decoration: none;
     &:hover {
       color: ${colors.main};
     }
@@ -82,4 +82,38 @@ const PaginationButton = styled.button`
   }
 `;
 
-export default { Table, THead, TableWrapper, TD, Centerer, PaginationWrapper, PaginationButton };
+const ErrorMessage = styled.h2`
+  color: ${colors.red};
+  z-index: 10;
+  font-family: "Noto Sans", sans-serif;
+`;
+
+const IconLink = styled.a`
+  all: unset;
+  cursor: pointer;
+  background-color: ${colors.main};
+  padding: ${px2rem(8)} ${px2rem(10)};
+  color: ${colors.white};
+  font-size: 0;
+  border-radius: ${px2rem(4)};
+  border: 1px solid ${colors.clearGray};
+  box-shadow: 18px 35px 60px -27px rgba(0, 0, 0, 0.56);
+  transition: all 0.3s ease;
+  display: block;
+  text-transform: capitalize;
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+  &:hover {
+    background-color: ${colors.variant};
+  }
+  svg {
+    width: ${px2rem(30)};
+    height: ${px2rem(30)};
+    path {
+      fill: ${colors.white}!important;
+    }
+  }
+`;
+
+export default { Table, THead, TableWrapper, TD, Centerer, PaginationWrapper, PaginationButton, IconLink, ErrorMessage };
