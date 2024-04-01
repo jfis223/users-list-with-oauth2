@@ -1,5 +1,7 @@
 export interface RestDataSourceOptions {
   params?: Record<string, unknown>;
+  headers?: Record<string, string>;
+  withCredentials?: boolean;
 }
 
 export interface IRestDataSource {

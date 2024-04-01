@@ -1,6 +1,6 @@
 import type { DataModel } from "../../../../common/interfaces/data_model.ts";
 import { User } from "../../domain/models/user.ts";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
 
 export class UserDataModel implements DataModel<User> {
   @Expose()
@@ -16,10 +16,23 @@ export class UserDataModel implements DataModel<User> {
   toDomain() {
     return new User({
       id: this.id,
-      firstName: this.first_name,
-      lastName: this.last_name,
+      name: `${this.first_name} ${this.last_name}`,
       email: this.email,
       avatar: this.avatar
+    });
+  }
+}
+
+export class UserDetailDataModel implements DataModel<User> {
+  @Type(() => UserDataModel)
+  @Expose()
+  data!: UserDataModel;
+  toDomain() {
+    return new User({
+      id: this.data?.id,
+      name: `${this.data.first_name} ${this.data.last_name}`,
+      email: this.data.email,
+      avatar: this.data.avatar
     });
   }
 }

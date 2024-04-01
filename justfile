@@ -8,10 +8,15 @@ corepack-enable:
 # Installs project package.json dependencies
 install-deps:
     ./nvm_exec.sh yarn
+    @cd backend && yarn
 
 # Starts React development server
 dev:
-    ./nvm_exec.sh yarn dev
+     ./nvm_exec.sh yarn dev
+
+# Starts React development server
+dev-back:
+     @cd backend && pwd && yarn start
 
 # Starts React debug server
 debug:

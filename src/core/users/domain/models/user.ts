@@ -3,15 +3,13 @@ import type { ConstructorType } from "../../../../common/interfaces/constructor_
 export class User {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
+  name: string;
+  avatar?: string;
 
   constructor(params: ConstructorType<User>) {
     this.id = params.id;
     this.email = params.email;
-    this.firstName = params.firstName;
-    this.lastName = params.lastName;
+    this.name = params.name;
     this.avatar = params.avatar;
   }
 }
