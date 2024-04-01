@@ -46,6 +46,9 @@ const PositionedTexture = styled.div`
   height: 100%;
   object-fit: cover;
   svg {
+    position: absolute;
+
+    z-index: 0;
     path {
       fill: ${colors.clearGray}!important;
     }

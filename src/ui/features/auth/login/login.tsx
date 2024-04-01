@@ -7,7 +7,7 @@ import LoginForm from "./components/login_form/login_form.tsx";
 export default function LogIn() {
   return (
     <BackgroundImageLayout>
-      <Card>
+      <Card width={400}>
         <Styled.Center>
           <div>
             <Styled.Title>Welcome</Styled.Title>

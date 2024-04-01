@@ -1,4 +1,4 @@
-import type { FlattenSimpleInterpolation } from "styled-components";
+import type { FlattenSimpleInterpolation, InterpolationFunction } from "styled-components";
 import { css } from "styled-components";
 
 export const breakpoints: Record<BreakpointTypes, number> = {
@@ -8,13 +8,14 @@ export const breakpoints: Record<BreakpointTypes, number> = {
 };
 
 export type BreakpointTypes = "sm" | "md" | "lg";
-export const minWidth = (type: BreakpointTypes, styles: FlattenSimpleInterpolation) => css`
+
+export const minWidth = <T extends object>(type: BreakpointTypes, styles: FlattenSimpleInterpolation | InterpolationFunction<T>) => css<T>`
   @media (min-width: ${breakpoints[type]}px) {
     ${styles}
   }
 `;
 
-export const maxWidth = (type: BreakpointTypes, styles: FlattenSimpleInterpolation) => css`
+export const maxWidth = <T extends object>(type: BreakpointTypes, styles: FlattenSimpleInterpolation | InterpolationFunction<T>) => css<T>`
   @media (max-width: ${breakpoints[type]}px) {
     ${styles}
   }
