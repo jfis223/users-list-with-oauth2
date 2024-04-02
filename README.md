@@ -12,6 +12,7 @@
 - Styled Components
 - Yup + React Hook Form
 - Passport.JS with Express
+- Cypress for E2E tests
 
 
 ### Installation
@@ -66,4 +67,12 @@ just install-deps
 ```shell
 just dev-back # in one terminal window
 just dev # in another terminal window
+```
+
+### Testing
+```shell
+just e2e-run
+```
+```shell
+just e2e-open
 ```

@@ -24,13 +24,6 @@ router.get("/login/success", (req, res) => {
   }
 });
 
-router.get("/login/failed", (req, res) => {
-  res.status(401).json({
-    success: false,
-    message: "failure"
-  });
-});
-
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect(CLIENT_URL);
@@ -42,7 +35,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", {
     successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed"
+    failureRedirect: CLIENT_URL + "auth/login?error=true"
   })
 );
 
@@ -52,7 +45,7 @@ router.get(
   "/github/callback",
   passport.authenticate("github", {
     successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed"
+    failureRedirect: CLIENT_URL + "auth/login?error=true"
   })
 );
 
@@ -62,11 +55,14 @@ router.get(
   "/amazon/callback",
   passport.authenticate("amazon", {
     successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed"
+    failureRedirect: CLIENT_URL + "auth/login?error=true"
   })
 );
 
-router.post("/login", passport.authenticate("local", { successRedirect: "/auth/local", failureRedirect: "/login/failed", scope: ["profile"] }));
+router.post(
+  "/login",
+  passport.authenticate("local", { successRedirect: "/auth/local", failureRedirect: CLIENT_URL + "auth/login?error=true", scope: ["profile"] })
+);
 router.get("/local", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
   res.setHeader("Access-Control-Allow-Credentials", true);

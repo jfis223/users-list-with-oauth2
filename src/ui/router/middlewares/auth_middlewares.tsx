@@ -10,6 +10,8 @@ export function LoggedInMiddleware({ children }: PropsWithChildren) {
   const isLogged = useSelector(selectIsLoggedIn);
   const location = useLocation();
   const navigate = useNavigate();
+  console.log(location, "apa");
+  console.log(location.search, "epa");
 
   const verify = useMemo(
     () =>
