@@ -41,3 +41,10 @@ prettier-fix:
 # Proxy comand through nvm
 nvm-exec command:
     ./nvm_exec.sh {{command}}
+
+e2e-run:
+    ./nvm_exec.sh yarn e2e:run
+
+# Opens E2E tests UI
+e2e-open:
+    ./nvm_exec.sh yarn e2e:open

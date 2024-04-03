@@ -1,30 +1,78 @@
-# React + TypeScript + Vite
+# Joaquín Fischer - Prueba Técnica Fronted x Cloud District
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Features
 
-Currently, two official plugins are available:
+- React
+- Redux
+- Clean architecture
+- Vite
+- Dependency Injection with Inversify
+- Typescript
+- Axios
+- Styled Components
+- Yup + React Hook Form
+- Passport.JS with Express
+- Cypress for E2E tests
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1) Please install these packages to install the project.
 
-- Configure the top-level `parserOptions` property like this:
+- nvm
+- just
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+2) Run the following command to install the node version declared in the `.nvmrc`
+file for this project:
+
+```shell
+nvm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3) Enable corepack.
+
+```shell
+just corepack-enable
+```
+
+4) Set Environment Variables
+
+Create a `.env` file with these variables in the root folder:
+
+```
+VITE_APP_API_URL=https://reqres.in
+VITE_APP_AUTH_URL=http://localhost:3000
+```
+Also, create another `.env` file with these variables in the `backend`  folder:
+```
+GOOGLE_CLIENT_ID=XXXXX
+GOOGLE_CLIENT_SECRET=XXXXX
+GITHUB_CLIENT_ID=XXXXX
+GITHUB_CLIENT_SECRET=XXXXX
+FACEBOOK_APP_ID=XXXXX
+FACEBOOK_APP_SECRET=XXXXX
+AMAZON_APP_ID=XXXXX
+AMAZON_APP_SECRET=XXXXX
+CLIENT_URL=http://localhost:5173/
+```
+
+5) Install dependencies
+
+```shell
+just install-deps
+```
+
+6) Run!
+
+```shell
+just dev-back # in one terminal window
+just dev # in another terminal window
+```
+
+### Testing
+```shell
+just e2e-run
+```
+```shell
+just e2e-open
+```

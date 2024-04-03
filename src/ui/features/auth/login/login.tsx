@@ -3,8 +3,10 @@ import Card from "../../../components/card/card.tsx";
 import Styled from "./login.styled.ts";
 import { Amazon, Github, Google } from "../../../assets/icons";
 import LoginForm from "./components/login_form/login_form.tsx";
+import { useSearchParams } from "react-router-dom";
 
 export default function LogIn() {
+  const [params] = useSearchParams();
   return (
     <BackgroundImageLayout>
       <Card width={400}>
@@ -34,6 +36,7 @@ export default function LogIn() {
               <Styled.Line />
             </Styled.OrWrapper>
             <LoginForm />
+            {params.get("error") === "true" && <Styled.ErrorMessage>{"We couldn't log you in. Please try again."}</Styled.ErrorMessage>}
           </div>
         </Styled.Center>
       </Card>

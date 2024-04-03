@@ -81,4 +81,11 @@ const Center = styled.div`
   height: 100%;
 `;
 
-export default { Wrapper, Title, SocialButton, ButtonWrapper, OrWrapper, Line, Or, Subtitle, Center };
+const ErrorMessage = styled.p`
+  margin-bottom: ${px2rem(10)};
+  margin-top: ${px2rem(10)};
+  font-size: ${px2rem(12)};
+  color: ${colors.red};
+`;
+
+export default { Wrapper, Title, SocialButton, ButtonWrapper, OrWrapper, Line, Or, Subtitle, Center, ErrorMessage };
