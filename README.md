@@ -3,7 +3,7 @@
 ### Features
 
 - React
-- Redux
+- Redux + Redux Saga
 - Clean architecture
 - Vite
 - Dependency Injection with Inversify
