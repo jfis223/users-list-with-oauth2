@@ -1,9 +1,9 @@
-# Joaquín Fischer - Prueba Técnica Fronted x Cloud District
+# Joaquín Fischer - Prueba Técnica Frontend x Cloud District
 
 ### Features
 
 - React
-- Redux
+- Redux + Redux Saga
 - Clean architecture
 - Vite
 - Dependency Injection with Inversify
