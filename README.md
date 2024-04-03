@@ -1,4 +1,4 @@
-# Joaquín Fischer - Prueba Técnica Fronted x Cloud District
+# Joaquín Fischer - Prueba Técnica Frontend x Cloud District
 
 ### Features
 
