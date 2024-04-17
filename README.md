@@ -1,4 +1,6 @@
-# Joaquín Fischer - Prueba Técnica Frontend x Cloud District
+# Reqres.In Users List with OAuth2 Login
+
+A React App that uses [Reqres.In](https://reqres.in/) to display a list of users and has OAuth2 implemented with Amazon, Github & Google. 
 
 ### Features
 
@@ -13,6 +15,11 @@
 - Yup + React Hook Form
 - Passport.JS with Express
 - Cypress for E2E tests
+
+### Screenshots
+![Alt text](./screen1.png "Login View")
+
+![Alt text](./screen2.png "Users Page")
 
 
 ### Installation
